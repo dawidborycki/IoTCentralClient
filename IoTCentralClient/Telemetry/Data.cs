@@ -1,14 +1,24 @@
-﻿using Microsoft.Azure.Devices.Client;
+﻿#region Using
+
+using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
 using System.Text;
+
+#endregion
 
 namespace IoTCentralClient.Telemetry
 {
     public class Data
     {
+        #region Properties
+
         public double Temperature { get; set; }
 
         public double Humidity { get; set; }
+
+        #endregion
+
+        #region Methods
 
         public Message ToMessage()
         {
@@ -21,5 +31,7 @@ namespace IoTCentralClient.Telemetry
         {
             return $"Temperature: {Temperature:F2}, Humidity: {Humidity:F2}";
         }
+
+        #endregion
     }
 }

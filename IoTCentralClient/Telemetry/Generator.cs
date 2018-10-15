@@ -98,6 +98,5 @@ namespace IoTCentralClient.Telemetry
         }
 
         #endregion
-
     }
 }

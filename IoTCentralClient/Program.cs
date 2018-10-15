@@ -2,7 +2,6 @@
 
 using IoTCentralClient.Helpers;
 using IoTCentralClient.Telemetry;
-using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.Devices.Shared;
 using System;
 using System.Threading;
@@ -16,17 +15,21 @@ namespace IoTCentralClient
     {
         #region Fields
 
-        private static CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();        
+        private static CancellationTokenSource cancellationTokenSource 
+            = new CancellationTokenSource();        
 
         private static readonly string telemetryActivePropertyName = "IsTelemetryActive";
-        private static readonly string propertyValue = "value";        
+        private static readonly string propertyValue = "value";
 
         #endregion
+
+        #region Main
 
         static void Main(string[] args)
         {
             // Configure cancel key press handler (to stop the app)
-            Console.CancelKeyPress += new ConsoleCancelEventHandler(CancelKeyPressHandler);
+            Console.CancelKeyPress += new ConsoleCancelEventHandler(
+                CancelKeyPressHandler);
 
             // Connect to the cloud
             var deviceClient = DeviceClientHelper.Init();
@@ -44,7 +47,12 @@ namespace IoTCentralClient
             telemetryGenerator.Start().Wait();
         }
 
-        private static void CancelKeyPressHandler(object sender, ConsoleCancelEventArgs e)
+        #endregion
+
+        #region Event handlers
+
+        private static void CancelKeyPressHandler(
+            object sender, ConsoleCancelEventArgs e)
         {
             if (e.SpecialKey == ConsoleSpecialKey.ControlC)
             {
@@ -67,5 +75,7 @@ namespace IoTCentralClient
 
             return Task.CompletedTask;
         }
+
+        #endregion
     }
 }
