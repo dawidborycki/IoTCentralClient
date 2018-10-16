@@ -29,7 +29,7 @@ namespace IoTCentralClient.Telemetry
 
         public override string ToString()
         {
-            return $"Temperature: {Temperature:F2}, Humidity: {Humidity:F2}";
+            return $"Temperature: {Temperature,6:F2}, Humidity: {Humidity,6:F2}";
         }
 
         #endregion

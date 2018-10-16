@@ -41,7 +41,7 @@ namespace IoTCentralClient.Telemetry
 
         #region Constructor
 
-        public Generator(DeviceClient deviceClient, 
+        public Generator(DeviceClient deviceClient,
             CancellationToken cancellationToken)
         {
             Check.IsNull(deviceClient);
@@ -88,7 +88,7 @@ namespace IoTCentralClient.Telemetry
                 Task.Delay(delayTime).Wait();
             }
         }
-        
+
         private double GetRandomValue(MeasurementRange measurementRange)
         {
             var randomValueRescaled = randomNumberGenerator.NextDouble()
